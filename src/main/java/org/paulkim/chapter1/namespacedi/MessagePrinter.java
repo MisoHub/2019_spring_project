@@ -1,4 +1,4 @@
-package org.paulkim.chapter1.propertydi;
+package org.paulkim.chapter1.namespacedi;
 
 import java.util.ArrayList;
 

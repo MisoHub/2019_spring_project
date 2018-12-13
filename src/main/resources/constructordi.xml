@@ -4,11 +4,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="helloMessage"	class="org.paulkim.chapter1.constructordi.Message">
-		<constructor-arg value="Hello Spring"/>
+		<constructor-arg value="Hello Constructor Spring"/>
 	</bean>
 
 	<bean id="byeMessage"	class="org.paulkim.chapter1.constructordi.Message">
-		<constructor-arg value="Bye Spring"/>
+		<constructor-arg value="Bye Constructor Spring"/>
 	</bean>
 
 	<bean id="myMessagePrinter1"	class="org.paulkim.chapter1.constructordi.MessagePrinter">

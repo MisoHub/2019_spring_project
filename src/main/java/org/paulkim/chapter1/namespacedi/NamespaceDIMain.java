@@ -1,16 +1,16 @@
-package org.paulkim.chapter1.propertydi;
+package org.paulkim.chapter1.namespacedi;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-public class PropertyDIMain {
+public class NamespaceDIMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:propertydi.xml");
+		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:namespacedi.xml");
 
-		MessagePrinter messagePrinter = context.getBean("myMessagePrinter2",MessagePrinter.class);
+		MessagePrinter messagePrinter = context.getBean("myMessagePrinter4",MessagePrinter.class);
 		
 		System.out.println("-----------------------");
 		messagePrinter.printMessage();

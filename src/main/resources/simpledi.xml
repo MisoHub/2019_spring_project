@@ -4,12 +4,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="helloMessage" class="org.paulkim.chapter1.simpledi.Message">
-		<property name="text" value="Hello Spring"></property>
+		<property name="text" value="Hello Simple Spring"></property>
 	
 	</bean>
 	
 	<bean id="byeMessage" class="org.paulkim.chapter1.simpledi.Message">
-		<property name="text" value="Bye Spring"></property>
+		<property name="text" value="Bye Simple Spring"></property>
 	</bean>
 	
 	
