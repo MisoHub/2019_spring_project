@@ -15,6 +15,8 @@ public class NamespaceDIMain {
 		System.out.println("-----------------------");
 		messagePrinter.printMessage();
 		System.out.println("-----------------------");
+		
+		context.close();
 	}
 
 }

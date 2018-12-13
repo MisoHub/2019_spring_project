@@ -15,6 +15,8 @@ public class SimpleDIMain {
 		System.out.println("-----------------------");
 		messagePrinter.printMessage();
 		System.out.println("-----------------------");
+		
+		context.close();
 	}
 
 }

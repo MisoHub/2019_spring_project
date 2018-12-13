@@ -1,6 +1,5 @@
 package org.paulkim.chapter1.annotationdi;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
@@ -16,6 +15,8 @@ public class AnnotationDIMain {
 		System.out.println("-----------------------");
 		messagePrinter.printMessage();
 		System.out.println("-----------------------");
+		
+		context.close();
 	}
 
 }

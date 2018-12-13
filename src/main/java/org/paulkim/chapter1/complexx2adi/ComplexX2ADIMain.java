@@ -16,6 +16,8 @@ public class ComplexX2ADIMain {
 		System.out.println("-----------------------");
 		messagePrinter.printMessage();
 		System.out.println("-----------------------");
+		
+		context.close();
 	}
 
 }
