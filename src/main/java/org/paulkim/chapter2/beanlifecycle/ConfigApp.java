@@ -9,7 +9,9 @@ import org.springframework.context.annotation.ImportResource;
 @Configuration
 public class ConfigApp {
 
-	@Bean 
+	
+	@Bean
+	// bean id = myReceiverList
 	public ArrayList<String> myReceiverList(){
 		ArrayList<String> arrList = new ArrayList<String>();
 		

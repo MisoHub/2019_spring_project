@@ -36,14 +36,17 @@ public class MessagePrinter implements InitializingBean, DisposableBean{
 		}
 	}
 
-	
+	// set destroy method with implements interface
 	public void destroy() throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("printMessage Object destroy");
 		receivers.clear();
 	}
 
+	// set afterPropertiesSet method with implements interface
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("printMessege Object afterPropertiesSet");
 		if(receivers == null) {
 			receivers = new ArrayList<String>();
 		}
