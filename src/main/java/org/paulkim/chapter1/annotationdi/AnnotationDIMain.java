@@ -8,6 +8,7 @@ public class AnnotationDIMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		// use java config file with annotation.
 		AbstractApplicationContext context = new AnnotationConfigApplicationContext(ConfigApp.class); 
 	
 		MessagePrinter messagePrinter = context.getBean("myMessagePrinter",MessagePrinter.class);
