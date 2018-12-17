@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="propertyMessage"
+		class="org.paulkim.chapter2.userdefinebean.Message" p:text="Hello Property Namespace Spring" />
+
+	<bean id="constructorMessage"
+		class="org.paulkim.chapter2.userdefinebean.Message" p:text="Hello Constructor Namespace Spring" />
+		
+	<!--  using default constructor & getter/setter -->
+	<bean id="myMessagePrinter1"
+		class="org.paulkim.chapter2.userdefinebean.MessagePrinter"
+		p:message-ref="propertyMessage" p:receivers-ref="myReceiverList">
+	</bean>
+	
+	<!--  using non-default constructor #2-->
+	<bean id="myMessagePrinter2"
+		class="org.paulkim.chapter2.userdefinebean.MessagePrinter"
+		c:message-ref="constructorMessage" c:receivers-ref="myReceiverList">
+	</bean>
+	
+	
+	<!-- user define bean -->
+	<bean id="userMessagePrinter1"
+		class="org.paulkim.chapter2.userdefinebean.UserDefineBeanImpl"
+		init-method="init" destroy-method="end"
+		c:message-ref="constructorMessage" c:receivers-ref="myReceiverList">
+	</bean>
+	
+
+	<util:list id="myReceiverList">
+		<value>jessy</value>
+		<value>gregory</value>
+		<value>vencent</value>
+		<value>james</value>
+		<value>haruki</value>
+	</util:list>
+	
+	
+</beans>

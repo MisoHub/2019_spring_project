@@ -1,11 +1,8 @@
-package org.paulkim.chapter2.userdefinebean;
+package org.paulkim.chapter2.envConfigBean;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
-
-public class MessagePrinter {
+public class MessagePrinter{
 
 	public Message message;
 	public ArrayList<String> receivers;
@@ -26,6 +23,11 @@ public class MessagePrinter {
 	public void setReceivers(ArrayList<String> receivers) {
 		this.receivers = receivers;
 	}
+	
+	public Message  getMessage() {
+		return this.message;
+	}
+
 	public void setMessage(Message message) {
 		this.message = message;
 	}
@@ -35,5 +37,4 @@ public class MessagePrinter {
 			System.out.println("TO."+ s +" : "+this.message.getText());
 		}
 	}
-
 }

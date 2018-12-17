@@ -8,12 +8,12 @@ public class UserDefineBeanMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:**/beanlifecycle.xml"); 
+		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:**/userdefinebean.xml"); 
 	
-		MessagePrinter messagePrinter = context.getBean("myMessagePrinter2",MessagePrinter.class);
+		UserDefineBeanImpl messagePrinter = context.getBean("userMessagePrinter1",UserDefineBeanImpl.class);
 		
 		System.out.println("-----------------------");
-		messagePrinter.printMessage();
+		messagePrinter.messagePrinter();
 		System.out.println("-----------------------");
 		
 		context.close();
