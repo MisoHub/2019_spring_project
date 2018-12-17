@@ -8,7 +8,7 @@ public class ConstructorDIMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:constructordi.xml");
+		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:**/constructordi.xml");
 
 		MessagePrinter messagePrinter = context.getBean("myMessagePrinter2",MessagePrinter.class);
 		

@@ -1,4 +1,4 @@
-package org.paulkim.chapter2.beanlifecycle;
+package org.paulkim.chapter2.userdefinebean;
 
 import java.util.ArrayList;
 
@@ -26,11 +26,6 @@ public class MessagePrinter implements InitializingBean, DisposableBean{
 	public void setReceivers(ArrayList<String> receivers) {
 		this.receivers = receivers;
 	}
-	
-	public Message  getMessage() {
-		return this.message;
-	}
-	
 	public void setMessage(Message message) {
 		this.message = message;
 	}

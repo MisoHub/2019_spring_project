@@ -11,7 +11,7 @@ public class ComplexA2XDIMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:complexa2xdi.xml"); 
+		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:**/complexa2xdi.xml"); 
 				
 		ArrayList<MessagePrinter> messagePrinterList = new ArrayList<MessagePrinter>();
 		messagePrinterList.add(context.getBean("myMessagePrinter2", MessagePrinter.class));

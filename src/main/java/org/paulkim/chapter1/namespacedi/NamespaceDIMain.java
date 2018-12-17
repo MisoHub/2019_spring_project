@@ -8,7 +8,7 @@ public class NamespaceDIMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:namespacedi.xml");
+		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:**/namespacedi.xml");
 
 		MessagePrinter messagePrinter = context.getBean("myMessagePrinter4",MessagePrinter.class);
 		
