@@ -1,4 +1,4 @@
-package org.paulkim.chapter2.externalpropertybean;
+package org.paulkim.chapter2.externalpropertyjava;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,7 +6,6 @@ import java.util.Arrays;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.context.annotation.Bean;
 
 public class UserDefineBeanImpl
 		implements UserDefineBean, BeanNameAware,  InitializingBean, DisposableBean {
@@ -27,7 +26,7 @@ public class UserDefineBeanImpl
 			System.out.println("TO." + s + " : " + this.message.getText());
 		}
 	}
-	
+
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println(" >> init Bean...");
@@ -44,10 +43,6 @@ public class UserDefineBeanImpl
 		System.out.println(" >> end method...");
 	}
 
-	
-	
-	
-	
 	public void setMessage(Message message) {
 		this.message = message;
 	}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	profile="dev">
+
+
+	<bean id="propertyMessage"
+		class="org.paulkim.chapter2.profileconfig.Message" p:text="Hello Property Namespace Spring"/>
+		
+	<!--  using default constructor & getter/setter -->
+	<bean id="myMessagePrinter1"
+		class="org.paulkim.chapter2.profileconfig.MessagePrinter"
+		p:message-ref="propertyMessage" p:receivers-ref="myReceiverList-dev">
+	</bean>
+
+	<util:list id="myReceiverList-dev">
+		<value>tester1</value>
+		<value>tester2</value>
+		<value>tester3</value>
+		<value>developer1</value>
+		<value>developer2</value>
+	</util:list>
+	
+</beans>
