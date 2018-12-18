@@ -20,12 +20,19 @@ public class EnvConfigBeanMain {
 		ConfigurableEnvironment env = context.getEnvironment();
 		env.getPropertySources().addLast(new ResourcePropertySource("classpath:envconfigbean.properties"));
 		
-		context.getResource("classpath:**/envconfigbean.xml");
-		context.refresh();
+		// load bean context from xml file after setting environments,
+		// because UserDefineBeanImpl use environment values..
+		// GenericXmlApplicationContext Object has load method to parsing spring xml configuration file. 
+		GenericXmlApplicationContext gcontext = (GenericXmlApplicationContext)context;
 		
-		UserDefineBean messagePrinter = context.getBean("userMessagePrinter1",UserDefineBeanImpl.class);
+		gcontext.load("classpath:**/envconfigbean.xml");
+		gcontext.refresh();
 		
+		UserDefineBean messagePrinter = gcontext.getBean("userMessagePrinter1",UserDefineBeanImpl.class);
 		messagePrinter.messagePrinter();
+		
+		gcontext.close();
+	
 	}
 
 }

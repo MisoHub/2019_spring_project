@@ -1,4 +1,4 @@
-package org.paulkim.chapter2.envConfigBean;
+package org.paulkim.chapter2.externalpropertybean;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,16 +6,13 @@ import java.util.Arrays;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.context.EnvironmentAware;
-import org.springframework.core.env.Environment;
 
 public class UserDefineBeanImpl
-		implements UserDefineBean, BeanNameAware, EnvironmentAware, InitializingBean, DisposableBean {
+		implements UserDefineBean, BeanNameAware,  InitializingBean, DisposableBean {
 
 	private String beanName;
 	private Message message;
 	private ArrayList<String> receivers;
-	private Environment env;
 
 	// use default constructor
 	public UserDefineBeanImpl() {
@@ -30,40 +27,21 @@ public class UserDefineBeanImpl
 		}
 	}
 
+	public void afterPropertiesSet() throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println(" >> init Bean...");
+	}
 
+	// get bean name after initialize bean.. 
 	public void setBeanName(String arg0) {
 		// TODO Auto-generated method stub
 		this.beanName = arg0;
 	}
-	
-
-	public void afterPropertiesSet() throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println(" >> init Bean...");
-
-		setBeanName(this.env.getProperty("mybean.name"));
-		setMessage(new Message(this.env.getProperty("mybean.message")));
-		setReceiversWithStrings(this.env.getProperty("mybean.receivers", String[].class));
-		receivers.clear();
-
-		receivers.add("jessy");
-		receivers.add("gregory");
-		receivers.add("vencent");
-		receivers.add("james");
-		receivers.add("haruki");
-	}
-
-	public void setEnvironment(Environment arg0) {
-		// TODO Auto-generated method stub
-		this.env = arg0;
-	}
-
 
 	public void destroy() throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println(" >> end method...");
 	}
-
 
 	public void setMessage(Message message) {
 		this.message = message;
