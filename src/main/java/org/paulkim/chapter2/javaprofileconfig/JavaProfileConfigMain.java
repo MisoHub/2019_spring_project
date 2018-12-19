@@ -5,10 +5,11 @@ import java.util.Scanner;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 
-public class ProfileConfigMain {
+public class JavaProfileConfigMain {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -17,21 +18,22 @@ public class ProfileConfigMain {
 		Scanner scanner = new Scanner(System.in);
 		String s = scanner.next();
 		String profile = s.contentEquals("PRD") ? "prd" : "dev";
-		System.out.println("result:"+s.contentEquals("PRD"));
-		System.out.println(profile);
 		scanner.close();
 		
 		// set environment with properties
-		GenericXmlApplicationContext context = new GenericXmlApplicationContext();
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.getEnvironment().setActiveProfiles(profile);
-		context.load("classpath:**/profileconfig-prd.xml","classpath:**/profileconfig-dev.xml");
+		// Properties order..
+		context.register(BeanConfig.class, BeanConfig2.class);
 		context.refresh();
 		
-		MessagePrinter messagePrinter = context.getBean("myMessagePrinter1",MessagePrinter.class);
-		messagePrinter.printMessage();
+		UserDefineBeanImpl messagePrinter1 = context.getBean("userMessagePrinter1",UserDefineBeanImpl.class);
+		messagePrinter1.messagePrinter();
+		
+		UserDefineBeanImpl messagePrinter2 = context.getBean("userMessagePrinter2",UserDefineBeanImpl.class);
+		messagePrinter2.messagePrinter();
 		
 		context.close();
-	
 	}
 
 }
