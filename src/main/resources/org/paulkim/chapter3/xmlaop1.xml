@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<context:property-placeholder location="classpath:**/xmlaop1.properties" />
+
+	<bean id ="mybeanMessage" class="org.paulkim.chapter3.xmlaop1.Message">
+		<property name="text">
+			<value>${mybean.message}</value>
+		</property>
+	</bean>
+
+	<!--  if there is no type declaration of value, ${mybean.receivers} cannot be used. --> 
+	<bean id="myReceivers" class="java.util.ArrayList">
+		<constructor-arg>  
+			<value type="java.lang.String[]"> ${mybean.receivers} </value>
+		</constructor-arg> 
+	</bean>
+	
+
+	<bean id="adviceLog4J" class="org.paulkim.chapter3.xmlaop1.AdviceLog4J"></bean>
+	
+	<aop:config>
+		<aop:aspect id="messageLog4JAdvice" ref="adviceLog4J">
+			<aop:pointcut id="pointcutMethod" expression="within(org.paulkim.chapter3.xmlaop1.*)"></aop:pointcut>
+			<aop:around pointcut-ref="pointcutMethod" method="messageLogger"></aop:around>
+		</aop:aspect>
+	</aop:config>
+
+
+	<!-- user define bean -->
+	<bean id="userMessagePrinter1"
+		class="org.paulkim.chapter3.xmlaop1.MessagePrinter">
+		
+		<!-- property from bean.. -->
+		<property name="message">
+			<ref bean="mybeanMessage"/>
+		</property>
+		
+		<property name="receivers">
+			<ref bean="myReceivers"/>
+		</property>
+	</bean>
+
+</beans>
