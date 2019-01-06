@@ -12,7 +12,7 @@
 
 	<context:property-placeholder location="classpath:**/xmlaop1.properties" />
 
-	<bean id ="mybeanMessage" class="org.paulkim.chapter3.xmlaop1.Message">
+	<bean id ="myMessage" class="org.paulkim.chapter3.xmlaop1.Message">
 		<property name="text">
 			<value>${mybean.message}</value>
 		</property>
@@ -30,7 +30,8 @@
 	
 	<aop:config>
 		<aop:aspect id="messageLog4JAdvice" ref="adviceLog4J">
-			<aop:pointcut id="pointcutMethod" expression="within(org.paulkim.chapter3.xmlaop1.*)"></aop:pointcut>
+		<!-- if Every method in package named of xmlaop1, 'myMessage' bean not be able to set text value.  -->
+			<aop:pointcut id="pointcutMethod" expression="within(org.paulkim.chapter3.xmlaop1.MessagePrinter)"></aop:pointcut>
 			<aop:around pointcut-ref="pointcutMethod" method="messageLogger"></aop:around>
 		</aop:aspect>
 	</aop:config>
@@ -42,7 +43,7 @@
 		
 		<!-- property from bean.. -->
 		<property name="message">
-			<ref bean="mybeanMessage"/>
+			<ref bean="myMessage"/>
 		</property>
 		
 		<property name="receivers">

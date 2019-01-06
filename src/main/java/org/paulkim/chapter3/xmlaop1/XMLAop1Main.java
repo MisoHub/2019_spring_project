@@ -16,6 +16,10 @@ public class XMLAop1Main {
 		//	AbstractApplicationContext context = new AnnotationConfigApplicationContext(ExternalConfig.class);
 		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:**/xmlaop1.xml");
 		
+		// Message class doesn't be adjusted by advice 
+		Message message = context.getBean("myMessage",Message.class);
+		System.out.println(message.getText());
+		
 		MessagePrinter messagePrinter = context.getBean("userMessagePrinter1",MessagePrinter.class);
 		messagePrinter.printMessage();
 		
