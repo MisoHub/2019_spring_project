@@ -10,9 +10,13 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-	<context:property-placeholder location="classpath:**/xmlaop1.properties" />
+	<context:property-placeholder location="classpath:**/xmlaop.properties" />
+	
+	<aop:aspectj-autoproxy/>
+		<bean id="adviceLog" class="org.paulkim.chapter3.annotationaop.AdviceLog4J"/>
+	
 
-	<bean id ="myMessage" class="org.paulkim.chapter3.xmlaop1.Message">
+	<bean id ="myMessage" class="org.paulkim.chapter3.annotationaop.Message">
 		<property name="text">
 			<value>${mybean.message}</value>
 		</property>
@@ -26,20 +30,9 @@
 	</bean>
 	
 
-	<bean id="adviceLog4J" class="org.paulkim.chapter3.xmlaop1.AdviceLog4J"></bean>
-	
-	<aop:config>
-		<aop:aspect id="messageLog4JAdvice" ref="adviceLog4J">
-		<!-- if Every method in package named of xmlaop1, 'myMessage' bean not be able to set text value.  -->
-			<aop:pointcut id="pointcutMethod" expression="within(org.paulkim.chapter3.xmlaop1.MessagePrinter)"></aop:pointcut>
-			<aop:around pointcut-ref="pointcutMethod" method="messageLogger"></aop:around>
-		</aop:aspect>
-	</aop:config>
-
-
 	<!-- user define bean -->
 	<bean id="userMessagePrinter1"
-		class="org.paulkim.chapter3.xmlaop1.MessagePrinter">
+		class="org.paulkim.chapter3.annotationaop.MessagePrinter">
 		
 		<!-- property from bean.. -->
 		<property name="message">

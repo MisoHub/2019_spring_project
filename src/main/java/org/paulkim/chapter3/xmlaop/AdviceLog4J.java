@@ -1,4 +1,4 @@
-package org.paulkim.chapter3.xmlaop1;
+package org.paulkim.chapter3.xmlaop;
 
 import java.util.logging.Logger;
 

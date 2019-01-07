@@ -1,4 +1,4 @@
-package org.paulkim.chapter3.xmlaop1;
+package org.paulkim.chapter3.xmlaop;
 
 import java.io.IOException;
 
@@ -7,18 +7,18 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 
-public class XMLAop1Main {
+public class XMLAopMain {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
 		// set environment with properties
 		//	AbstractApplicationContext context = new AnnotationConfigApplicationContext(ExternalConfig.class);
-		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:**/xmlaop1.xml");
+		AbstractApplicationContext context = new GenericXmlApplicationContext("classpath:**/xmlaop.xml");
 		
 		// Message class doesn't be adjusted by advice 
-		Message message = context.getBean("myMessage",Message.class);
-		System.out.println(message.getText());
+//		Message message = context.getBean("myMessage",Message.class);
+//		System.out.println(message.getText());
 		
 		MessagePrinter messagePrinter = context.getBean("userMessagePrinter1",MessagePrinter.class);
 		messagePrinter.printMessage();

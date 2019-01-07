@@ -23,6 +23,7 @@ public class JavaProfileConfigMain {
 		// set environment with properties
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.getEnvironment().setActiveProfiles(profile);
+	
 		// Properties order..
 		context.register(BeanConfig.class, BeanConfig2.class);
 		context.refresh();
