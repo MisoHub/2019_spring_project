@@ -31,9 +31,10 @@ public class AdviceLog4J {
 	
 	// adjust pointcut expression directly
 	
-	/* ERROR occured @Before 
-	 BeanPostProcessor before instantiation of bean failed; 
-	 nested exception is java.lang.IllegalArgumentException: ProceedingJoinPoint is only supported for around advice
+	/* ERROR 
+	 * Error creating bean with name 'myMessage' defined in file [D:\workspace\EeeeeeasySpring\target\classes\org\paulkim\chapter3\annotationaop.xml]:
+	 * BeanPostProcessor before instantiation of bean failed;
+	 * nested exception is java.lang.IllegalArgumentException: ProceedingJoinPoint is only supported for around advice
 	 */
 //
 //	@Before("within(org.paulkim.chapter3.annotationaop.Message)")
